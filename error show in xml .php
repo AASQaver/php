@@ -1,0 +1,32 @@
+<!Doctypehtml>
+<html>
+<body>
+<?php
+
+libxml_use_internal_errors(true);
+
+$myXMLData =
+"<?xml version = '1.0' encoding = 'UTF-8'?>
+
+<document>
+<user> John Doe</WrongUser>
+<email>johndoe@gmail.com</wrongemail>
+</document>
+$xml = simplexml_load_string($myXMLData);
+
+if($xml === false)
+{
+echo "Failed Loading XML: ";
+
+foreach(libxml_get_errors() as $error)
+{
+echo "<br>", $error->message;
+}
+
+}
+else {
+print_r($xml);
+}
+?>
+</body>
+  
